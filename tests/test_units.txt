@@ -1,0 +1,17 @@
+km.Mg/(pc.s)
+km**2/(pc**2.s.Mg**-1)
+km.s
+km**-1.s
+km.km**2
+km**-2.km**-1
+boo.km
+boo.wibble
+log(km).km
+log(wibble).km
+log(km).log(s)
+log(km).log(boo)
+log(wibble).log(boo)
+xfn(km).log(km)
+xfn(s).xfn(km)
+xfn(boo).xfn(km)
+xfn(boo).xfn(wibble)

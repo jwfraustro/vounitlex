@@ -1,0 +1,44 @@
+[build-system]
+requires = ["setuptools", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "vounitlex"
+version = "0.1"
+authors = [
+    {name = "Joshua Fraustro", email="jfraustro@stsci.edu"},
+]
+description = "Minimal Python package for parsing VOUnits"
+readme = "README.md"
+requires-python = ">=3.10"
+
+dependencies = [
+    "lark"
+    ]
+
+classifiers = [
+
+    "Topic :: Scientific/Engineering :: Astronomy",
+    "Topic :: Software Development :: Libraries :: Python Modules",
+
+    "License :: OSI Approved :: MIT License",
+]
+keywords = [
+    "ivoa",
+    "vounits"
+    ]
+
+[project.optional-dependencies]
+test = ["pytest", "pytest-cov"]
+dev = ["pylint", "ruff", "pre-commit"]
+docs = ["sphinx", "sphinx_design", "furo", "sphinx-copybutton", "toml", "sphinx_autodoc_typehints"]
+
+[project.urls]
+Homepage = "https://github.com/jwfraustro/vounitlex"
+
+[tool.setuptools.package-data]
+"vounitlex" = ["py.typed"]
+
+[tool.ruff]
+line-length = 120
+extend-exclude = ["docs/conf.py"]
