@@ -18,7 +18,6 @@ class VOUnitParser:
         self.parser = Lark.open(
             f"./vounitlex/grammars/vounit{version}.lark",
             start="input",
-            debug=True
         )
 
     def parse(self, string: str) -> tree.Tree:
