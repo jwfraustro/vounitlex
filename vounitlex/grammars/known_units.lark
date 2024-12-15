@@ -1,0 +1,217 @@
+// non-prefixed base units
+
+ASTRONOMICALUNIT: "AU" | "au"
+DECIBEL: "dB"
+MILLIARCSECOND: "mas"
+
+ADU: "adu"
+AMPERE: "A"
+ANGSTROM: "Angstrom" | "angstrom"
+ARCMINUTE: "arcmin"
+ARCSECOND: "arcsec"
+BARN: "barn"
+BEAM: "beam"
+BESSELIANYEAR: "Ba"
+BIT: "bit"
+BYTE: "byte" | "B"
+CANDELA: "cd"
+COULOMB: "C"
+DAY: "d"
+DEBYE: "D"
+DEGREEANGLE: "deg"
+DETECTORCHANNEL: "chan"
+DISTRIBUTIONBIN: "bin"
+ELECTRONVOLT: "eV"
+ERG: "erg"
+FARAD: "F"
+GAUSS: "G"
+GRAM: "g"
+HENRY: "H"
+HERTZ: "Hz"
+HOUR: "h"
+JANSKY: "Jy"
+JOULE: "J"
+JULIANYEAR: "a" | "yr"
+KELVIN: "K"
+LIGHTYEAR: "lyr"
+LUMEN: "lm"
+LUX: "lx"
+METER: "m"
+MINUTETIME: "min"
+MOLE: "mol"
+NEWTON: "N"
+NUMBER: "ct" | "count"
+OHM: "Ohm"
+PARSEC: "pc"
+PASCAL: "Pa"
+PERCENT: "%"
+PHOTON: "ph" | "photon"
+PIXEL: "pixel" | "pix"
+RADIAN: "rad"
+RAYLEIGH: "R"
+RYDBERG: "Ry"
+SECOND: "s"
+SIEMENS: "S"
+SOLARLUMINOSITY: "solLum"
+SOLARMASS: "solMass"
+SOLARRADIUS: "solRad"
+STELLARMAGNITUDE: "mag"
+STERADIAN: "sr"
+TESLA: "T"
+UNIFIEDATOMICMASSUNIT: "u"
+VOLT: "V"
+VOXEL: "voxel"
+WATT: "W"
+WEBER: "Wb"
+YEARTROPICAL: "ta"
+
+_unprefixed_base_units: ASTRONOMICALUNIT
+    | DECIBEL
+    | MILLIARCSECOND
+
+// scaling prefixes
+
+QUECTO: "q"
+RONTO: "r"
+YOCTO: "y"
+ZEPTO: "z"
+ATTO: "a"
+FEMTO: "f"
+PICO: "p"
+NANO: "n"
+MICRO: "u"
+MILLI: "m"
+CENTI: "c"
+DECI: "d"
+DECA: "da"
+HECTO: "h"
+KILO: "k"
+MEGA: "M"
+GIGA: "G"
+TERA: "T"
+PETA: "P"
+EXA: "E"
+ZETTA: "Z"
+YOTTA: "Y"
+RONNA: "R"
+QUETTA: "Q"
+
+KIBI: "Ki"
+MEBI: "Mi"
+GIBI: "Gi"
+TEBI: "Ti"
+PEBI: "Pi"
+EXBI: "Ei"
+ZEBI: "Zi"
+YOBI: "Yi"
+
+scaling_prefix: QUECTO
+    | RONTO
+    | YOCTO
+    | ZEPTO
+    | ATTO
+    | FEMTO
+    | PICO
+    | NANO
+    | MICRO
+    | MILLI
+    | CENTI
+    | DECI
+    | DECA
+    | HECTO
+    | KILO
+    | MEGA
+    | GIGA
+    | TERA
+    | PETA
+    | EXA
+    | ZETTA
+    | YOTTA
+    | RONNA
+    | QUETTA
+
+binary_prefix: KIBI
+    | MEBI
+    | GIBI
+    | TEBI
+    | PEBI
+    | EXBI
+    | ZEBI
+    | YOBI
+
+_si_prefixed_units: AMPERE
+	| JULIANYEAR
+	| ADU
+	| ARCMINUTE
+	| ARCSECOND
+	| BARN
+	| BEAM
+	| DISTRIBUTIONBIN
+	| COULOMB
+	| CANDELA
+	| DETECTORCHANNEL
+	| NUMBER
+	| NUMBER
+	| DAY
+	| DEBYE
+	| DEGREEANGLE
+	| ERG
+	| ELECTRONVOLT
+	| FARAD
+	| GRAM
+	| GAUSS
+	| HENRY
+	| HOUR
+	| HERTZ
+	| JOULE
+	| JANSKY
+	| KELVIN
+	| LUMEN
+	| LUX
+	| LIGHTYEAR
+	| METER
+	| STELLARMAGNITUDE
+	| MINUTETIME
+	| MOLE
+	| NEWTON
+	| OHM
+	| PASCAL
+	| PARSEC
+	| PHOTON
+	| PHOTON
+	| PIXEL
+	| PIXEL
+	| RAYLEIGH
+	| RADIAN
+	| RYDBERG
+	| SECOND
+	| SIEMENS
+	| SOLARLUMINOSITY
+	| SOLARMASS
+	| SOLARRADIUS
+	| STERADIAN
+	| TESLA
+	| UNIFIEDATOMICMASSUNIT
+	| VOLT
+	| VOXEL
+	| WATT
+	| WEBER
+	| JULIANYEAR
+
+_combined_prefixed_units: BYTE
+    | BIT
+
+_known_units: scaling_prefix? _si_prefixed_units
+    | (binary_prefix | scaling_prefix)? _combined_prefixed_units
+    | _unprefixed_base_units
+
+// known functions
+LOG : "log"
+LN: "ln"
+EXP: "exp"
+SQRT: "sqrt"
+
+known_function: LOG
+    | LN
+    | EXP
+    | SQRT

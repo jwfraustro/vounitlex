@@ -1,0 +1,76 @@
+// Lark grammar for parsing VOU unit expressions, adapted from Unity grammar
+
+input: _complete_expression
+| scalefactor _complete_expression
+| LIT1
+
+_complete_expression: _product_of_units
+| _product_of_units division _unit_expression
+
+_product_of_units: _unit_expression
+    | _product_of_units product _unit_expression
+
+_unit_expression: _term
+| _function_application
+| _OPEN_P _complete_expression _CLOSE_P
+
+_function_application: known_function _OPEN_P function_operand _CLOSE_P
+| STRING _OPEN_P function_operand _CLOSE_P
+
+function_operand: _complete_expression
+| scalefactor _complete_expression
+
+scalefactor: LIT10 power numeric_power
+| LIT10
+| LIT1
+| VOUFLOAT
+
+division: DIVISION
+_term: unit
+| unit power numeric_power
+
+unit: _known_units
+| STRING
+| QUOTED_STRING
+| STRING QUOTED_STRING
+| PERCENT
+
+power: STARSTAR
+
+numeric_power: integer
+| parenthesized_number
+
+parenthesized_number: _OPEN_P integer _CLOSE_P
+| _OPEN_P FLOAT _CLOSE_P
+| _OPEN_P integer division UNSIGNED_INTEGER _CLOSE_P
+
+integer: SIGNED_INTEGER | UNSIGNED_INTEGER
+product: DOT
+
+
+// TERMINALS
+
+CARET: "^"
+DIVISION: "/"
+DOT: "."
+FLOAT: /[-+]?[0-9]+.[0-9]+/
+LIT1: "1"
+LIT10: "10"
+_OPEN_P: "("
+_CLOSE_P: ")"
+STAR: "*"
+STARSTAR: "**"
+WHITESPACE: /\s/
+PERCENT: "%"
+
+VOUFLOAT: /0.[0-9]+([eE][+-]?[0-9]+)?/
+    | /[1-9][0-9]*(.[0-9]+)?([eE][+-]?[0-9]+)?/
+
+// consumes all base units, scaling prefixes
+STRING: /[a-zA-Z]+/
+QUOTED_STRING: "'" STRING "'"
+
+%import common.INT -> UNSIGNED_INTEGER
+%import common.SIGNED_INT -> SIGNED_INTEGER
+%import .known_units._known_units
+%import .known_units.known_function
