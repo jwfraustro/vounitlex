@@ -14,7 +14,7 @@ pip install .
 
 The current version allows for parsing VOUnit 1.1 strings in two methods: `parse()` and `check()`. The parse method returns the Lark tree, while the check method returns a boolean value indicating whether the string is valid VOUnit syntax.
 
-The parser can recognize recognized units, scaling prefixes, and functional operators.
+The parser can recognize known base units, scaling prefixes, and functional operators.
 
 Currently, no additional functionality is provided, but future versions will include methods for interacting with the Lark tree.
 
